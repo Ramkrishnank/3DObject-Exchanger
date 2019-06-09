@@ -1,0 +1,127 @@
+﻿<Window x:Class="_3DObject_Exporter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:helix="http://helix-toolkit.org/wpf"
+           xmlns:h="http://helixtoolkit.codeplex.com"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:_3DObject_Exporter"
+       
+        mc:Ignorable="d"
+        Title=" 3D Object Exporter" Height="600" Width="1000"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto" Icon="Assets\favIcon.ico">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ComboBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Slider.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
+        <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
+            <materialDesign:DrawerHost.LeftDrawerContent>
+                <DockPanel MinWidth="212">
+                    <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
+                                    DockPanel.Dock="Top"
+                                    HorizontalAlignment="Right" Margin="16"
+                                    IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
+                    <ListBox x:Name="DemoItemsListBox" Margin="0 16 0 16" SelectedIndex="0"                         
+                             ItemsSource="{Binding DemoItems}"
+                             PreviewMouseLeftButtonUp="UIElement_OnPreviewMouseLeftButtonUp">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate >
+                              
+                                <!--<TextBlock Text="{Binding Name}" Margin="32 0 32 0" />-->
+                                <!--<materialDesign:PackIcon Kind="FileImport"  />-->
+                                
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </DockPanel>
+            </materialDesign:DrawerHost.LeftDrawerContent>
+            <DockPanel>
+                <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                            Mode="PrimaryMid" DockPanel.Dock="Top">
+                    <DockPanel>
+
+                        <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False"
+                                        x:Name="MenuToggleButton"/>
+                        <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                            <StackPanel>
+                                <Button Content="Hello World" Click="MenuPopupButton_OnClick"/>
+                                <Button Content="Nice Popup" Click="MenuPopupButton_OnClick"/>
+                                <Button Content="Can't Touch This" IsEnabled="False" />
+                                <Separator/>
+                                <Button Content="Goodbye" Click="MenuPopupButton_OnClick"/>
+                            </StackPanel>
+                        </materialDesign:PopupBox>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">CAD Object Exchanger</TextBlock>
+                    </DockPanel>
+                </materialDesign:ColorZone>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <!--<domain1:DocumentationLinks DataContext="{Binding ElementName=DemoItemsListBox, Path=SelectedItem}"
+                                                Margin="0 0 0 16"
+                                                />-->
+                    <ScrollViewer Grid.Row="1" 
+                                  HorizontalScrollBarVisibility="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.HorizontalScrollBarVisibilityRequirement}"
+                                  VerticalScrollBarVisibility="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.VerticalScrollBarVisibilityRequirement}" 
+                                  Padding="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.MarginRequirement}">
+                        <ContentControl Height="Auto" Width="Auto" >
+                            <helix:HelixViewport3D x:Name="view"   ShowCameraInfo="False"  RotationSensitivity="1" BorderThickness="0.001"   IsHeadLightEnabled="True" ZoomExtentsWhenLoaded="True"  Background="LightBlue"  ShowTriangleCountInfo="True"  ShowCoordinateSystem="True"  RenderTransformOrigin="0.499,0.527">
+
+                                <helix:HelixViewport3D.Camera>
+                                   
+                                    <PerspectiveCamera FieldOfView="130" />
+                                </helix:HelixViewport3D.Camera>
+                                <!--<local:ModelCreation  MeshSizeU="360" MeshSizeV="240" Fill="DarkRed" C2="1.7" />-->
+                                <!--<h:SphereVisual3D Center="1,1,1" Radius="1.2" Fill="White"/>
+            <h:SphereVisual3D Center="-1,-1,1" Radius="1.4" Fill="Red"/>
+            <h:SphereVisual3D Center="-1,1,-1" Radius="1.6" Fill="Green"/>
+            <h:SphereVisual3D Center="1,-1,-1" Radius="1.8" Fill="Blue"/>-->
+                                <!--<h:HelixVisual3D Turns="4" Length="10" MeshSizeU="500" MeshSizeV="500"/>-->
+                                <!--<local:Create3DModel  MeshSizeU="
+                                " MeshSizeV="240" Fill="DarkRed" C2="1.7" />-->
+                                <helix:GridLinesVisual3D Width="100" Length="100" MinorDistance="1" MajorDistance="1" Thickness="0.01"/>
+                            </helix:HelixViewport3D>
+                        </ContentControl>
+                    </ScrollViewer>
+                    <Button Name="btnImport" 
+    Style="{StaticResource MaterialDesignRaisedAccentButton}"
+    Width="120"
+    ToolTip="Resource name: Import"
+    materialDesign:RippleAssist.Feedback="#DD000000" Click="btnImport_Click"  >
+
+                        <materialDesign:PackIcon Kind="Export" />
+                    </Button>
+                    <Button Name="btnExport" 
+    Style="{StaticResource MaterialDesignRaisedAccentButton}"
+    Width="120"
+    ToolTip="Resource name: Import"
+    materialDesign:RippleAssist.Feedback="#DD000000" Click="btnExport_Click" Margin="301,0,571,0"  >
+
+                        <materialDesign:PackIcon Kind="ExportVariant" />
+                    </Button>
+                    <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}" x:Name="MainSnackbar"
+                                            Grid.Row="1" />
+                </Grid>
+                <!--<ProgressBar Name="pgBar" Grid.Row="1"
+  Style="{StaticResource MaterialDesignCircularProgressBar}"
+  Value="35"
+  IsIndeterminate="True" />-->
+            </DockPanel>
+        </materialDesign:DrawerHost>
+    </materialDesign:DialogHost>
+</Window>
