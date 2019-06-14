@@ -34,6 +34,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="devDept.Eyeshot.Control.Wpf.v12, Version=12.0.456.0, Culture=neutral, PublicKeyToken=5385d83d2fb4d7d9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\devDept Software\Eyeshot Ultimate 12\Bin\devDept.Eyeshot.Control.Wpf.v12.dll</HintPath>
+    </Reference>
+    <Reference Include="devDept.Eyeshot.Control.x86.Wpf.v12">
+      <HintPath>C:\Program Files\devDept Software\Eyeshot Ultimate 12\Bin\x86\devDept.Eyeshot.Control.x86.Wpf.v12.dll</HintPath>
+    </Reference>
+    <Reference Include="devDept.Geometry.v12, Version=12.0.456.0, Culture=neutral, PublicKeyToken=9440825e8b4733bc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\devDept Software\Eyeshot Ultimate 12\Bin\devDept.Geometry.v12.dll</HintPath>
+    </Reference>
+    <Reference Include="devDept.Graphics.Wpf.v12, Version=12.0.456.0, Culture=neutral, PublicKeyToken=f3cd437f0d8061b5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\devDept Software\Eyeshot Ultimate 12\Bin\devDept.Graphics.Wpf.v12.dll</HintPath>
+    </Reference>
     <Reference Include="HelixToolkit, Version=2.7.0.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
       <HintPath>..\packages\HelixToolkit.2.7.0\lib\netstandard1.1\HelixToolkit.dll</HintPath>
     </Reference>
@@ -48,6 +63,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />

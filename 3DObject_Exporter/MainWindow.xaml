@@ -5,11 +5,11 @@
             xmlns:helix="http://helix-toolkit.org/wpf"
            xmlns:h="http://helixtoolkit.codeplex.com"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        
+           xmlns:ddes="http://schemas.devdept.com/winfx/2008/xaml/control"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:_3DObject_Exporter"
-       
+        xmlns:ddgr="http://schemas.devdept.com/winfx/2008/xaml/graphics"
         mc:Ignorable="d"
         Title=" 3D Object Exporter" Height="600" Width="1000"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -80,23 +80,61 @@
                                   VerticalScrollBarVisibility="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.VerticalScrollBarVisibilityRequirement}" 
                                   Padding="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.MarginRequirement}">
                         <ContentControl Height="Auto" Width="Auto" >
-                            <helix:HelixViewport3D x:Name="view"   ShowCameraInfo="False"  RotationSensitivity="1" BorderThickness="0.001"   IsHeadLightEnabled="True" ZoomExtentsWhenLoaded="True"  Background="LightBlue"  ShowTriangleCountInfo="True"  ShowCoordinateSystem="True"  RenderTransformOrigin="0.499,0.527">
+                          
+                                <!--<helix:HelixViewport3D x:Name="view"   ShowCameraInfo="False"  RotationSensitivity="1" BorderThickness="0.001"   IsHeadLightEnabled="True" ZoomExtentsWhenLoaded="True"  Background="LightBlue"  ShowTriangleCountInfo="True"  ShowCoordinateSystem="True"  RenderTransformOrigin="0.499,0.527">
 
                                 <helix:HelixViewport3D.Camera>
                                    
                                     <PerspectiveCamera FieldOfView="130" />
                                 </helix:HelixViewport3D.Camera>
-                                <!--<local:ModelCreation  MeshSizeU="360" MeshSizeV="240" Fill="DarkRed" C2="1.7" />-->
+                                --><!--<local:ModelCreation  MeshSizeU="360" MeshSizeV="240" Fill="DarkRed" C2="1.7" />-->
                                 <!--<h:SphereVisual3D Center="1,1,1" Radius="1.2" Fill="White"/>
             <h:SphereVisual3D Center="-1,-1,1" Radius="1.4" Fill="Red"/>
             <h:SphereVisual3D Center="-1,1,-1" Radius="1.6" Fill="Green"/>
             <h:SphereVisual3D Center="1,-1,-1" Radius="1.8" Fill="Blue"/>-->
                                 <!--<h:HelixVisual3D Turns="4" Length="10" MeshSizeU="500" MeshSizeV="500"/>-->
                                 <!--<local:Create3DModel  MeshSizeU="
-                                " MeshSizeV="240" Fill="DarkRed" C2="1.7" />-->
+                                " MeshSizeV="240" Fill="DarkRed" C2="1.7" />--><!--
                                 <helix:GridLinesVisual3D Width="100" Length="100" MinorDistance="1" MajorDistance="1" Thickness="0.01"/>
-                            </helix:HelixViewport3D>
-                        </ContentControl>
+                            </helix:HelixViewport3D>-->
+
+                            <ddes:Model Name="model1" Height="453">
+                                <ddes:Model.Viewports>
+                                    <ddes:Viewport>
+                                        <ddes:Viewport.OriginSymbol>
+                                            <ddes:OriginSymbol Lighting="False"/>
+                                        </ddes:Viewport.OriginSymbol>
+                                        <ddes:Viewport.CoordinateSystemIcon>
+                                            <ddes:CoordinateSystemIcon Lighting="False"/>
+                                        </ddes:Viewport.CoordinateSystemIcon>
+                                        <ddes:Viewport.ViewCubeIcon>
+                                            <ddes:ViewCubeIcon Lighting="False"/>
+                                        </ddes:Viewport.ViewCubeIcon>
+                                        <ddes:Viewport.Background>
+                                            <ddgr:BackgroundSettings StyleMode="Solid"  TopColor="WhiteSmoke"/>
+                                        </ddes:Viewport.Background>
+                                        <ddes:Viewport.Grids>
+                                            <ddes:Grid Step="10" Lighting="False"/>
+                                        </ddes:Viewport.Grids>
+                                        <ddes:Viewport.ToolBars>
+                                            <ddes:ToolBar Position="HorizontalTopCenter">
+                                                <ddes:ToolBar.Buttons>
+                                                    <ddes:HomeToolBarButton/>
+                                                    <ddes:MagnifyingGlassToolBarButton/>
+                                                    <ddes:ZoomWindowToolBarButton/>
+                                                    <ddes:ZoomToolBarButton/>
+                                                    <ddes:PanToolBarButton/>
+                                                    <ddes:RotateToolBarButton/>
+                                                    <ddes:ZoomFitToolBarButton/>
+                                                </ddes:ToolBar.Buttons>
+                                            </ddes:ToolBar>
+                                        </ddes:Viewport.ToolBars>
+                                    </ddes:Viewport>
+                                </ddes:Model.Viewports>
+                            </ddes:Model>
+          
+
+            </ContentControl>
                     </ScrollViewer>
                     <Button Name="btnImport" 
     Style="{StaticResource MaterialDesignRaisedAccentButton}"
